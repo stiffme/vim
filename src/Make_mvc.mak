@@ -464,6 +464,11 @@ CPUARG =
 !if "$(ASSEMBLY_ARCHITECTURE)" == "i386" && "$(CPUNR)" == "pentium4"
 CPUARG = /arch:SSE2
 !endif
+
+# VC8/9/10 only allows specifying SSE architecture but only for 32bit
+!if "$(CPUNR)" == "core2"
+CPUARG = /arch:AVX2 /Ot /Oy /GT
+!endif
 !endif
 
 LIBC =
@@ -721,7 +726,7 @@ TCL_LIB = "$(TCL)\lib\tclstub$(TCL_VER).lib"
 CFLAGS  = $(CFLAGS) -DFEAT_TCL
 TCL_OBJ	= $(OUTDIR)\if_tcl.obj
 TCL_INC	= /I "$(TCL)\Include" /I "$(TCL)"
-TCL_LIB = $(TCL)\lib\tcl$(TCL_VER)vc.lib
+TCL_LIB = $(TCL)\lib\tcl$(TCL_VER).lib
 !endif
 !endif
 
