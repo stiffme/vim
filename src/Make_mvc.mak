@@ -467,7 +467,7 @@ CPUARG = /arch:SSE2
 
 # VC8/9/10 only allows specifying SSE architecture but only for 32bit
 !if "$(CPUNR)" == "core2"
-CPUARG = /arch:AVX2 /Ot /Oy /GT
+CPUARG = /arch:AVX2 /Ot /Oy /GT /favor:INTEL64
 !endif
 !endif
 
