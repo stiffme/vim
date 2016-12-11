@@ -468,6 +468,13 @@ CPUARG = /arch:SSE2
 # VC8/9/10 only allows specifying SSE architecture but only for 32bit
 !if "$(CPUNR)" == "core2"
 CPUARG = /arch:AVX2 /Ot /Oy /GT /favor:INTEL64
+
+!ifdef PGO
+!if "$(PGO)" =="GENPROFILE"
+CFLAGS = $(CFLAGS) /GL
+!endif
+!endif
+
 !endif
 !endif
 
@@ -1032,6 +1039,14 @@ conflags = $(conflags) /map /mapinfo:lines
 !ENDIF
 
 LINKARGS1 = $(linkdebug) $(conflags)
+
+!if "$(PGO)" =="GENPROFILE"
+LINKARGS1 = $(LINKARGS1) /LTCG /GENPROFILE
+!endif
+!if "$(PGO)" =="OPTBUILD"
+LINKARGS1 = $(LINKARGS1) /LTCG /USEPROFILE
+!endif
+
 LINKARGS2 = $(CON_LIB) $(GUI_LIB) $(NODEFAULTLIB) $(LIBC) $(OLE_LIB) user32.lib \
 		$(LUA_LIB) $(MZSCHEME_LIB) $(PERL_LIB) $(PYTHON_LIB) $(PYTHON3_LIB) $(RUBY_LIB) \
 		$(TCL_LIB) $(NETBEANS_LIB) $(XPM_LIB) $(LINK_PDB)
