@@ -1,33 +1,51 @@
-/* this file contains the actual definitions of */
-/* the IIDs and CLSIDs */
+
+
+/* this ALWAYS GENERATED file contains the IIDs and CLSIDs */
 
 /* link this file in with the server and any clients */
 
 
-/* File created by MIDL compiler version 3.00.44 */
-/* at Sat Jan 03 16:34:55 1998
+ /* File created by MIDL compiler version 8.01.0620 */
+/* at Tue Jan 19 11:14:07 2038
  */
 /* Compiler settings for if_ole.idl:
-    Os (OptLev=s), W1, Zp8, env=Win32, ms_ext, c_ext
+    Oicf, W1, Zp8, env=Win32 (32b run), target_arch=X86 8.01.0620 
+    protocol : dce , ms_ext, c_ext, robust
     error checks: none
+    VC __declspec() decoration level: 
+         __declspec(uuid()), __declspec(selectany), __declspec(novtable)
+         DECLSPEC_UUID(), MIDL_INTERFACE()
 */
-//@@MIDL_FILE_HEADING(  )
+/* @@MIDL_FILE_HEADING(  ) */
+
+#pragma warning( disable: 4049 )  /* more than 64k source lines */
+
+
 #ifdef __cplusplus
 extern "C"{
+#endif 
+
+
+#include <rpc.h>
+#include <rpcndr.h>
+
+#ifdef _MIDL_USE_GUIDDEF_
+
+#ifndef INITGUID
+#define INITGUID
+#include <guiddef.h>
+#undef INITGUID
+#else
+#include <guiddef.h>
 #endif
 
-#ifdef __MINGW32__
-# include <w32api.h>
+#define MIDL_DEFINE_GUID(type,name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) \
+        DEFINE_GUID(name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8)
 
-# if __W32API_MAJOR_VERSION == 3 && __W32API_MINOR_VERSION < 10
-   /* This define is missing from older MingW versions of w32api, even though
-    * IID is defined. */
-#  define __IID_DEFINED__
-# endif
-#endif
+#else // !_MIDL_USE_GUIDDEF_
 
 #ifndef __IID_DEFINED__
-# define __IID_DEFINED__
+#define __IID_DEFINED__
 
 typedef struct _IID
 {
@@ -37,23 +55,31 @@ typedef struct _IID
     unsigned char  c[8];
 } IID;
 
-#endif
+#endif // __IID_DEFINED__
 
 #ifndef CLSID_DEFINED
-# define CLSID_DEFINED
+#define CLSID_DEFINED
 typedef IID CLSID;
-#endif
+#endif // CLSID_DEFINED
 
-const IID IID_IVim = {0x0F0BFAE2,0x4C90,0x11d1,{0x82,0xD7,0x00,0x04,0xAC,0x36,0x85,0x19}};
+#define MIDL_DEFINE_GUID(type,name,l,w1,w2,b1,b2,b3,b4,b5,b6,b7,b8) \
+        EXTERN_C __declspec(selectany) const type name = {l,w1,w2,{b1,b2,b3,b4,b5,b6,b7,b8}}
+
+#endif !_MIDL_USE_GUIDDEF_
+
+MIDL_DEFINE_GUID(IID, IID_IVim,0x0F0BFAE2,0x4C90,0x11d1,0x82,0xD7,0x00,0x04,0xAC,0x36,0x85,0x19);
 
 
-const IID LIBID_Vim = {0x0F0BFAE0,0x4C90,0x11d1,{0x82,0xD7,0x00,0x04,0xAC,0x36,0x85,0x19}};
+MIDL_DEFINE_GUID(IID, LIBID_Vim,0x0F0BFAE0,0x4C90,0x11d1,0x82,0xD7,0x00,0x04,0xAC,0x36,0x85,0x19);
 
 
-const CLSID CLSID_Vim = {0x0F0BFAE1,0x4C90,0x11d1,{0x82,0xD7,0x00,0x04,0xAC,0x36,0x85,0x19}};
+MIDL_DEFINE_GUID(CLSID, CLSID_Vim,0x0F0BFAE1,0x4C90,0x11d1,0x82,0xD7,0x00,0x04,0xAC,0x36,0x85,0x19);
 
+#undef MIDL_DEFINE_GUID
 
 #ifdef __cplusplus
 }
 #endif
+
+
 

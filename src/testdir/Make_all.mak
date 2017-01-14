@@ -144,6 +144,8 @@ NEW_TESTS = test_arglist.res \
 	    test_channel.res \
 	    test_charsearch.res \
 	    test_cmdline.res \
+	    test_command_count.res \
+	    test_cscope.res \
 	    test_cscope.res \
 	    test_diffmode.res \
 	    test_digraph.res \
